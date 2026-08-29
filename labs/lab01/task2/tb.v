@@ -35,7 +35,7 @@ module tb;
     #20 t_a = 4'b1111; t_b = 4'b0001; t_cin = 0;   // sum=0000, cout=1
     #20 t_a = 4'b0101; t_b = 4'b0011; t_cin = 1;
     #20 t_a = 4'b1010; t_b = 4'b0101; t_cin = 0;
-    #20 $finish;
+    #30 $finish;
   end
 
   initial
