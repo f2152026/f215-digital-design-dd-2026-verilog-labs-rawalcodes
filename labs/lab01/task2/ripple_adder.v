@@ -19,7 +19,6 @@ module ripple_adder(
   output [3:0] sum,
   output       cout
 );
-
   wire c1, c2, c3;
 
   // TODO: your four FA_Gate instances go here.
