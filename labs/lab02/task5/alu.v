@@ -3,14 +3,13 @@
 // Subtraction is implemented the way real hardware does it: negate b (one's
 // complement, then +1 for two's complement) and add.
 //
-// This module has TWO separate bugs for you to find by simulating it with
-// your own testbench -- not by reading the code:
-//   1. A sensitivity-list bug (combinational output not updating on every
-//      relevant input change).
-//   2. A blocking/non-blocking bug in the subtract path.
-//
-// Write your own tb.v, use it to find both problems, then fix this file
-// and re-test before submitting.
+// Fixes applied to the given file:
+//   1. Sensitivity list: the block was sensitive to (a, b) only, so changing
+//      just op never re-evaluated result. op is now in the list.
+//   2. Blocking/non-blocking: the three dependent steps in the subtract path
+//      (b_inv -> b_twos -> result) used non-blocking assignments (<=), so each
+//      step used the stale value of the one before it. They are now blocking
+//      (=), as for any combinational chain in a single block.
 
 module alu (
   input      [3:0] a,
@@ -22,18 +21,17 @@ module alu (
   reg [3:0] b_inv;
   reg [3:0] b_twos;
 
-  always @(a, b) begin
+  always @(a, b, op) begin
     case (op)
       1'b0: begin
         result = a + b;                 // add
       end
       1'b1: begin
-        b_inv  <= ~b;                   // sub, via two's complement
-        b_twos <= b_inv + 1;
-        result <= a + b_twos;
+        b_inv  = ~b;                    // sub, via two's complement
+        b_twos = b_inv + 1;
+        result = a + b_twos;
       end
     endcase
   end
 
 endmodule
-
