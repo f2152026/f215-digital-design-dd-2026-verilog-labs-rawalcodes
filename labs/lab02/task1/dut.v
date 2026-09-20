@@ -1,7 +1,5 @@
-// dut.v
+// dut.v by Saumya
 // Top-level wrapper so the same tb.v can test either implementation.
-// Exactly ONE of the two instantiations below should be uncommented at a
-// time. Comment out the other one, save, and re-run the simulation.
 
 module DUT (
   input  I0,
