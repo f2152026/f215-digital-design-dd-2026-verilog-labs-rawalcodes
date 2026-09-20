@@ -1,4 +1,4 @@
-// tb.v
+// tb.v done
 // Self-checking testbench for the 4-bit ALU (alu.v): op=0 -> a+b, op=1 -> a-b.
 // The expected result is computed here with plain integer arithmetic
 // (independent of the design) and compared with !==.
