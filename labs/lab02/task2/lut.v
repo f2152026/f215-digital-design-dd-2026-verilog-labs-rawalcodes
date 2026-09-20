@@ -1,4 +1,4 @@
-// lut.v my assigned task
+// lut.v
 // A small parameterized ROM (lookup table): DEPTH words, each WIDTH bits
 // wide. dout continuously reflects mem[sel].
 
