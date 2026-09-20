@@ -1,4 +1,4 @@
-// tb.v
+// tb.v of SR
 // Self-checking testbench for the 2-bit magnitude comparator (comp2.v).
 // Exhaustively applies all 16 (A,B) combinations, computes the expected
 // outputs independently, and reports pass/fail.
